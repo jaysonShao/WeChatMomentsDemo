@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="bean"
+            type="tw.jason.homework.bean.TweetsBean" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/user_logo"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        app:aroundImg="@{bean.sender.avatar}"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:textSize="18sp"
+        android:text="@{bean.sender.nick}"
+        android:textStyle="bold"
+        android:layout_toRightOf="@+id/user_logo"
+        android:layout_marginLeft="8dp"
+        android:textColor="#595994"/>
+
+
+    <TextView
+        android:id="@+id/content_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/user_logo"
+        android:layout_below="@+id/user_name"
+        android:layout_marginLeft="8dp"
+        android:text="@{bean.content}"
+        android:textColor="@color/black"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="6dp"
+        android:textSize="18sp"/>
+
+
+    <LinearLayout
+        android:id="@+id/more"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/content_text"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@+id/user_logo"/>
+
+    <TextView
+        android:id="@+id/time_ago"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:textColor="@color/gray"
+        android:layout_below="@+id/more"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="8dp"
+        android:text="1 hours ago"
+        android:layout_toRightOf="@+id/user_logo"/>
+
+
+    <ImageView
+        android:id="@+id/option"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/more"
+        android:layout_below="@+id/more"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray"
+        android:layout_below="@+id/option"
+        android:layout_marginTop="25dp"/>
+
+</RelativeLayout>
+</layout>

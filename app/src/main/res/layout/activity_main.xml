@@ -16,70 +16,85 @@
         android:layout_height="match_parent"
         android:descendantFocusability="blocksDescendants">
 
-        <tw.jason.homework.view.NestScrollDistanceView
-            android:id="@+id/scroll"
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/smartlayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:overScrollMode="never">
-            <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_height="match_parent">
+            <com.scwang.smartrefresh.layout.header.ClassicsHeader
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:srlPrimaryColor="@color/black"/>
+            <tw.jason.homework.view.NestScrollDistanceView
+                android:id="@+id/scroll"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#00000000"
-                tools:context=".activity.MainActivity">
-
-                <RelativeLayout
-                    android:id="@+id/bar"
+                android:overScrollMode="never">
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="285dp"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    tools:context=".activity.MainActivity">
 
+                    <RelativeLayout
+                        android:id="@+id/bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="285dp"
+                        app:layout_constraintTop_toTopOf="parent">
+
+
+                        <ImageView
+                            android:id="@+id/master_img"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:normalImg="@{prfilebean.profileimage}"
+                            android:scaleType="centerCrop" />
+
+
+                        <TextView
+                            android:id="@+id/master_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="85dp"
+                            android:layout_marginBottom="10dp"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:textSize="18sp"
+                            android:text="@{prfilebean.nick}"/>
+                    </RelativeLayout>
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:overScrollMode="never"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                        app:layout_constraintTop_toBottomOf="@id/bar"/>
 
                     <ImageView
-                        android:id="@+id/master_img"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:normalImg="@{prfilebean.profileimage}"
-                        android:scaleType="centerCrop" />
+                        android:id="@+id/master_logo"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        app:layout_anchor="@id/bar"
+                        app:layout_anchorGravity="bottom|end"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:layout_marginRight="5dp"
+                        app:layout_constraintBottom_toTopOf="@id/recycler_view"
+                        app:normalImg="@{prfilebean.avatar}"/>
 
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <TextView
-                        android:id="@+id/master_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="85dp"
-                        android:layout_marginBottom="10dp"
-                        android:textStyle="bold"
-                        android:textColor="#fff"
-                        android:textSize="18sp"
-                        android:text="@{prfilebean.nick}"/>
-                </RelativeLayout>
+            </tw.jason.homework.view.NestScrollDistanceView>
+            <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:overScrollMode="never"
-                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                    app:layout_constraintTop_toBottomOf="@id/bar"/>
-
-                <ImageView
-                    android:id="@+id/master_logo"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    app:layout_anchor="@id/bar"
-                    app:layout_anchorGravity="bottom|end"
-                    app:layout_constraintRight_toRightOf="parent"
-                    android:layout_marginRight="5dp"
-                    app:layout_constraintBottom_toTopOf="@id/recycler_view"
-                    app:normalImg="@{prfilebean.avatar}"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </tw.jason.homework.view.NestScrollDistanceView>
         <!--?attr/actionBarSize-->
         <RelativeLayout
             android:id="@+id/navigation_bar"

@@ -1,5 +1,8 @@
 package tw.jason.homework.bean;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,10 +21,10 @@ public class TweetsBean {
     private String content = "";
     private SenderBean sender = new SenderBean();
     private String error = "";
-    @com.google.gson.annotations.SerializedName("unknown error")
-    private String _$UnknownError23 = ""; // FIXME check this code
-    private List<ImagesBean> images = new ArrayList<>();
-    private List<CommentsBean> comments = new ArrayList<>();
+    private List<ImagesBean> images = new ArrayList<>(0);
+    private List<CommentsBean> comments = new ArrayList<>(0);
+    @JSONField(name = "unknown error")
+    String _$UnknownError23 = "";
 
     public String getContent() {
         return content;
@@ -70,6 +73,7 @@ public class TweetsBean {
     public void setComments(List<CommentsBean> comments) {
         this.comments = comments;
     }
+
 
     public static class SenderBean {
         /**

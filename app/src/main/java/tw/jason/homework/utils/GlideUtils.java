@@ -15,13 +15,17 @@ public class GlideUtils {
 
 
     public static void toNormal(Context context, String url, ImageView imageView){
-        Glide.with(context).load(url).apply(RequestOptions.errorOf(R.mipmap.error).diskCacheStrategy(DiskCacheStrategy.ALL)
+        Glide.with(context).load(url)
+                .apply(RequestOptions.errorOf(R.mipmap.error)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .skipMemoryCache(false)).into(imageView);
     }
 
     public static void toAround(Context context,String url,ImageView imageView){
-        Glide.with(context).load(url).apply(RequestOptions.bitmapTransform(mroundedCorners)
-                .diskCacheStrategy(DiskCacheStrategy.ALL).skipMemoryCache(false)
+        Glide.with(context).load(url)
+                .apply(RequestOptions.bitmapTransform(mroundedCorners)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .skipMemoryCache(false)
                 .error(R.mipmap.error)).into(imageView);
     }
 }
